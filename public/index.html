@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TREASURE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%231a6b3c%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232a8f52%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20ry%3D%2214%22%20fill%3D%22url%28%23g%29%22/%3E%3Cg%20transform%3D%22translate%286%2C8%29%20scale%280.09%29%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M560%20224h-29.5c-8.8-20-21.6-37.7-37.4-52.5L512%2096h-32c-29.4%200-55.4%2013.5-73%2034.3-7.6-1.1-15.1-2.3-23-2.3H256c-77.4%200-141.9%2055-156.8%20128H56c-14.8%200-26.5-13.5-23.5-28.8C34.7%20215.8%2045.4%20208%2057%20208h1c3.3%200%206-2.7%206-6v-20c0-3.3-2.7-6-6-6-28.5%200-53.9%2020.4-57.5%2048.6C-3.9%20258.8%2022.7%20288%2056%20288h40c0%2052.2%2025.4%2098.1%2064%20127.3V496c0%208.8%207.2%2016%2016%2016h64c8.8%200%2016-7.2%2016-16v-48h128v48c0%208.8%207.2%2016%2016%2016h64c8.8%200%2016-7.2%2016-16v-80.7c11.8-8.9%2022.3-19.4%2031.3-31.3H560c8.8%200%2016-7.2%2016-16V240c0-8.8-7.2-16-16-16zm-128%2064c-8.8%200-16-7.2-16-16s7.2-16%2016-16%2016%207.2%2016%2016-7.2%2016-16%2016zM256%2096h128c5.4%200%2010.7.4%2015.9.8%200-.3.1-.5.1-.8%200-53-43-96-96-96s-96%2043-96%2096c0%202.1.5%204.1.6%206.2%2015.2-3.9%2031-6.2%2047.4-6.2z%22/%3E%3C/g%3E%3C/svg%3E">
+  <meta name="theme-color" content="#1a6b3c">
+  <link rel="stylesheet" href="style.css">
+  <meta name="google-site-verification" content="aB6i89pbOcBk5h2dZYeDGThnJlB2AXxRhQtyBnBHptw" />
+  <script src="script.js" defer></script>
+  <script type="module" src="firebaseauth.js"></script>
+
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="spinner"></div>
+    <p>Loading, please wait...</p>
+  </div>
+
+  <!-- Landing Screen -->
+  <div id="landingScreen" class="landing-screen">
+    <div class="ls-orb ls-orb-1"></div>
+    <div class="ls-orb ls-orb-2"></div>
+    <div class="ls-orb ls-orb-3"></div>
+
+    <div class="landing-content">
+      <div class="ls-brand">
+        <div class="ls-brand-icon"><i class="fas fa-piggy-bank"></i></div>
+        <span class="ls-brand-name">TREASURE</span>
+      </div>
+
+      <h1 class="ls-headline">
+        Class fund management,<br>
+        <em>simplified.</em>
+      </h1>
+
+      <p class="ls-sub">
+        The smarter way for treasurers to track contributions,<br>
+        manage expenses, and keep every classmate informed.
+      </p>
+
+      <div class="ls-cta">
+        <span class="ls-cta-dot"></span>
+        Click anywhere to enter
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth Container -->
+  <div id="authContainer" class="auth-container">
+    <div class="auth-orb auth-orb-1"></div>
+    <div class="auth-orb auth-orb-2"></div>
+    <div class="auth-orb auth-orb-3"></div>
+
+    <!-- Left Panel -->
+    <div class="auth-panel-left">
+      <div class="auth-panel-left-content">
+        <div class="auth-brand">
+          <div class="auth-brand-icon"><i class="fas fa-piggy-bank"></i></div>
+          <span class="auth-brand-name">TREASURE</span>
+        </div>
+        <h2 class="auth-left-title">Class fund management,<br><em>simplified.</em></h2>
+        <p class="auth-left-sub">The smarter way for treasurers to track contributions, manage expenses, and keep every classmate informed — in real time.</p>
+        <div class="auth-feature-list">
+          <div class="auth-feature-item"><div class="auth-feat-icon"><i class="fas fa-check"></i></div><span>100% Free, forever</span></div>
+          <div class="auth-feature-item"><div class="auth-feat-icon"><i class="fas fa-bolt"></i></div><span>Real-time updates</span></div>
+          <div class="auth-feature-item"><div class="auth-feat-icon"><i class="fas fa-shield-alt"></i></div><span>Role-based access control</span></div>
+          <div class="auth-feature-item"><div class="auth-feat-icon"><i class="fas fa-file-alt"></i></div><span>Printable financial reports</span></div>
+        </div>
+        <div class="auth-left-badge">
+          <span class="auth-badge-dot"></span>
+          <span>Trusted by student treasurers</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auth Card -->
+    <div class="auth-card">
+      <div class="auth-logo-mark">
+        <div class="auth-logo-icon"><i class="fas fa-piggy-bank"></i></div>
+        <span>TREASURE</span>
+        <button class="auth-theme-btn" id="authThemeToggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle dark mode">
+          <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+      </div>
+
+      <!-- Step 1: Role Picker (shown first) -->
+      <div id="rolePicker">
+        <div class="auth-form-heading" style="text-align:center;">
+          <h3>Sign in as</h3>
+          <p>Choose your role to continue</p>
+        </div>
+        <div class="role-cards">
+          <button type="button" class="role-card" onclick="selectRole('classofficer')">
+            <div class="role-card-icon"><i class="fas fa-user-shield"></i></div>
+            <div class="role-card-label">Class Officer</div>
+            <div class="role-card-sub">Manage funds &amp; members</div>
+          </button>
+          <button type="button" class="role-card" onclick="selectRole('student')">
+            <div class="role-card-icon"><i class="fas fa-user-graduate"></i></div>
+            <div class="role-card-label">Student</div>
+            <div class="role-card-sub">View class fund status</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Sign In / Sign Up forms (hidden until role chosen) -->
+      <div id="authForms" style="display:none;">
+
+        <!-- Back button + selected role pill -->
+        <div class="role-back-row">
+          <button type="button" class="role-back-btn" onclick="backToRolePicker()">
+            <i class="fas fa-arrow-left"></i> Change role
+          </button>
+          <span class="role-pill" id="rolePill">
+            <i class="fas fa-user-shield"></i>
+            <span id="rolePillText">Class Officer</span>
+          </span>
+        </div>
+
+        <!-- Tab Switcher -->
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-form="login" onclick="showForm('login')">Sign In</button>
+          <button class="tab-btn" data-form="signup" onclick="showForm('signup')">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="form active">
+          <div id="signInMessage" class="messageDiv"></div>
+          <div class="auth-form-heading">
+            <h3>Welcome back</h3>
+            <p>Sign in to continue to your dashboard</p>
+          </div>
+          <div class="form-group">
+            <label for="Email">Username or Email</label>
+            <input type="text" id="Email" class="form-control" placeholder="Username or Email" required>
+          </div>
+          <div class="form-group">
+            <label for="passwordInput">Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="passwordInput" class="form-control" placeholder="Enter your password" required>
+              <button type="button" class="password-toggle" onclick="togglePassword('passwordInput', this)" tabindex="-1">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="classSectionLogin">Class / Section</label>
+            <input type="text" id="classSectionLogin" class="form-control" placeholder="e.g. ICT21" required>
+          </div>
+          <input type="hidden" id="roleSelect" value="classofficer">
+          <button type="submit" class="btn-block" id="loginBtn">Sign In <i class="fas fa-arrow-right" style="margin-left:6px;font-size:0.8rem;"></i></button>
+          <p class="auth-switch-hint">Don't have an account? <button type="button" class="auth-link-btn" onclick="showForm('signup')">Sign up free</button></p>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signupForm" class="form">
+          <div id="signUpMessage" class="messageDiv"></div>
+          <div class="auth-form-heading">
+            <h3>Create account</h3>
+            <p>Join your class and start managing funds</p>
+          </div>
+          <div class="form-group">
+            <label for="newEmail">Username / Email</label>
+            <input type="text" id="newEmail" class="form-control" placeholder="Username or Email" required>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="newPassword">Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="newPassword" class="form-control" placeholder="Create password" required>
+                <button type="button" class="password-toggle" onclick="togglePassword('newPassword', this)" tabindex="-1">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="confirmPasswordInput">Confirm</label>
+              <div class="password-wrapper">
+                <input type="password" id="confirmPasswordInput" class="form-control" placeholder="Re-enter" required>
+                <button type="button" class="password-toggle" onclick="togglePassword('confirmPasswordInput', this)" tabindex="-1">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="classSectionInput">Class / Section</label>
+            <input type="text" id="classSectionInput" class="form-control" placeholder="e.g. ICT21" required>
+          </div>
+          <input type="hidden" id="signupRole" value="classofficer">
+
+          <!-- Terms Checkbox -->
+          <div class="terms-checkbox-wrapper">
+            <input type="checkbox" id="termsCheckbox" required>
+            <label for="termsCheckbox">I agree to the <a href="#" onclick="event.stopPropagation(); openTermsModal(); return false;">Terms and Conditions</a></label>
+          </div>
+
+          <button type="submit" class="btn-block" id="signupBtn">Create Account <i class="fas fa-arrow-right" style="margin-left:6px;font-size:0.8rem;"></i></button>
+          <p class="auth-switch-hint">Already have an account? <button type="button" class="auth-link-btn" onclick="showForm('login')">Sign in</button></p>
+        </form>
+
+      </div><!-- /#authForms -->
+    </div><!-- /.auth-card -->
+  </div>
+
+  <!-- App Container -->
+  <div id="appContainer" class="app-container">
+    <div class="menu-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="brand">
+            <button class="nav-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="brand-icon-wrap"><i class="fas fa-piggy-bank"></i></div>
+            <h1>TREASURE</h1>
+          </div>
+          
+          <div class="user-actions">
+
+            <!-- Home -->
+            <a href="https://treasure2-e26cd.web.app" class="header-icon-btn" title="Go to Home">
+              <i class="fas fa-house"></i>
+              <span class="header-btn-label">Home</span>
+            </a>
+
+            <!-- Theme Toggle -->
+            <button id="themeToggle" class="header-icon-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle theme"><i class="fa-solid fa-circle-half-stroke"></i>
+            </button>
+
+            <!-- Notifications -->
+            <div class="notif-wrapper" id="notifWrapper">
+              <button class="header-icon-btn" id="notifBtn" onclick="toggleNotifPanel()" aria-label="Notifications" title="Notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notif-badge" id="notifBadge" style="display:none;">0</span>
+              </button>
+              <div class="notif-panel" id="notifPanel">
+                <div class="notif-panel-header">
+                  <span>Notifications</span>
+                  <button onclick="clearAllNotifications()" class="notif-clear-btn">Clear all</button>
+                </div>
+                <div class="notif-list" id="notifList">
+                  <div class="notif-empty">No notifications yet</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Edit Profile -->
+            <button class="header-icon-btn" id="editProfileBtn" onclick="openEditProfile()" title="Edit Profile" aria-label="Edit profile">
+              <i class="fas fa-user-pen"></i>
+            </button>
+
+            <!-- Divider -->
+            <div class="header-divider"></div>
+
+            <!-- User info -->
+            <span id="currentUser" class="header-user-name"></span>
+            <span id="currentUserRole" class="header-user-role"></span>
+
+            <!-- Logout -->
+            <button id="logoutBtn" class="header-logout-btn" aria-label="Logout" title="Logout">
+              <i class="fas fa-right-from-bracket"></i>
+              <span class="header-btn-label">Logout</span>
+            </button>
+
+          </div>
+        </div>
+      
+          </div>
+    </header>
+
+    <!-- Main Layout -->
+    <main class="main-content">
+
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <h3>Navigation</h3>
+        <div class="nav-item active" data-tab="dashboard" onclick="switchTab('dashboard')" data-tooltip="Dashboard">
+          <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+        </div>
+        <div class="nav-item" data-tab="contributions" onclick="switchTab('contributions')" data-tooltip="Contributions">
+          <i class="fas fa-money-bill-wave"></i><span>Contributions</span>
+        </div>
+        <div class="nav-item" data-tab="payment" onclick="switchTab('payment')" data-tooltip="Payment">
+          <i class="fas fa-credit-card"></i><span>Payment</span>
+        </div>
+        <div class="nav-item" data-tab="classMembers" onclick="switchTab('classMembers')" data-tooltip="Class Members">
+          <i class="fas fa-users"></i><span>Class Members</span>
+        </div>
+        <div class="nav-item officer-only" data-tab="accountManagement" onclick="switchTab('accountManagement')" data-tooltip="Manage Accounts">
+          <i class="fas fa-user-shield"></i><span>Manage Accounts</span>
+        </div>
+        <div class="nav-item" data-tab="events" onclick="switchTab('events')" data-tooltip="Events">
+          <i class="fas fa-calendar-alt"></i><span>Events</span>
+        </div>
+        <div class="nav-item" data-tab="reports" onclick="switchTab('reports')" data-tooltip="Reports">
+          <i class="fas fa-chart-bar"></i><span>Reports</span>
+        </div>
+        <div class="nav-item" data-tab="auditLog" onclick="switchTab('auditLog')" data-tooltip="Audit Log">
+          <i class="fas fa-clipboard-list"></i><span>Audit Log</span>
+        </div>
+        <div class="nav-item" data-tab="creditsTab" onclick="switchTab('creditsTab')" data-tooltip="About">
+          <i class="fas fa-info-circle"></i><span>About</span>
+        </div>
+        
+        <div class="sidebar-bottom-actions">
+          <button class="sidebar-action-btn" onclick="openSettings()" data-tooltip="Settings" title="Settings">
+            <i class="fas fa-cog"></i>
+            <span class="btn-collapse-label">Settings</span>
+          </button>
+          <button class="sidebar-action-btn officer-only" onclick="exportAllData()" data-tooltip="Export Data" title="Export All Data">
+            <i class="fas fa-file-export"></i>
+            <span class="btn-collapse-label">Export Data</span>
+          </button>
+          <button class="sidebar-collapse-btn" onclick="toggleSidebarCollapse()" id="sidebarCollapseBtn">
+            <i class="fas fa-chevron-left"></i>
+            <span class="btn-collapse-label">Collapse</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Content Area -->
+      <div class="content-area">
+
+        <!-- Account Management -->
+        <div id="accountManagement" class="tab-content" style="display:none;">
+          <div class="page-header">
+            <h2><i class="fas fa-user-shield"></i> Student Accounts</h2>
+          </div>
+          <div class="card">
+            <div class="table-responsive">
+              <table>
+                <thead><tr>
+                  <th>Username / Email</th><th>Role</th><th>Created At</th><th>Actions</th>
+                </tr></thead>
+                <tbody id="studentAccountsTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="tab-content active" style="display:block;">
+          <div class="page-header">
+            <h2><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
+            <button class="btn btn-outline" onclick="updateDashboard()">
+              <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+          </div>
+
+          <div class="dash-stats-grid">
+            <div class="dash-stat-card">
+              <div class="dash-stat-left">
+                <span class="dash-stat-label">Total Funds</span>
+                <span class="dash-stat-value" id="totalFunds">₱0</span>
+                <span class="dash-stat-sub">Available balance</span>
+              </div>
+              <div class="dash-stat-icon dash-icon-teal"><i class="fas fa-wallet"></i></div>
+            </div>
+            <div class="dash-stat-card">
+              <div class="dash-stat-left">
+                <span class="dash-stat-label">Total Contributions</span>
+                <span class="dash-stat-value" id="totalContributions">₱0</span>
+                <span class="dash-stat-sub">All collections</span>
+              </div>
+              <div class="dash-stat-icon dash-icon-green"><i class="fas fa-arrow-trend-up"></i></div>
+            </div>
+            <div class="dash-stat-card">
+              <div class="dash-stat-left">
+                <span class="dash-stat-label">Total Expenses</span>
+                <span class="dash-stat-value" id="totalExpenses">₱0</span>
+                <span class="dash-stat-sub">All payments out</span>
+              </div>
+              <div class="dash-stat-icon dash-icon-orange"><i class="fas fa-arrow-trend-down"></i></div>
+            </div>
+            <div class="dash-stat-card">
+              <div class="dash-stat-left">
+                <span class="dash-stat-label">Members Paid</span>
+                <span class="dash-stat-value" id="membersPaid">0/0</span>
+                <span class="dash-stat-sub">Contribution status</span>
+              </div>
+              <div class="dash-stat-icon dash-icon-blue"><i class="fas fa-circle-check"></i></div>
+            </div>
+          </div>
+
+          <div class="dash-panels-grid">
+            <div class="card dash-panel">
+              <div class="card-header">
+                <h3><i class="fas fa-history"></i> Recent Contributions</h3>
+                <button class="btn btn-outline btn-sm" onclick="switchTab('contributions')">View All</button>
+              </div>
+              <div class="table-responsive">
+                <table class="dash-clean-table">
+                  <thead><tr><th>Name</th><th>Amount</th><th>Status</th></tr></thead>
+                  <tbody id="recentContributions"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card dash-panel">
+              <div class="card-header">
+                <h3><i class="fas fa-calendar"></i> Upcoming Events</h3>
+                <button class="btn btn-outline btn-sm" onclick="switchTab('events')">View All</button>
+              </div>
+              <div class="dash-events-list" id="upcomingEvents"></div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="card dash-panel officer-only" id="recentActivityPanel" style="display:none;">
+            <div class="card-header">
+              <h3><i class="fas fa-list-ul"></i> Recent Activity</h3>
+              <button class="btn btn-outline btn-sm" onclick="clearActivityLog()">Clear</button>
+            </div>
+            <div class="activity-list" id="activityList">
+              <div class="activity-empty">No recent activity.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contributions -->
+        <div id="contributions" class="tab-content" style="display:none;">
+          <div class="page-header">
+            <h2><i class="fas fa-money-bill-wave"></i> Contributions</h2>
+            <button class="btn btn-primary officer-only" onclick="showModal('addContributionModal')">
+              <i class="fas fa-plus"></i> Add Contribution
+            </button>
+          </div>
+
+          <div class="filter-bar">
+            <div class="filter-item">
+              <label for="statusFilter">Status</label>
+              <select id="statusFilter" class="form-control">
+                <option value="all">All Status</option>
+                <option value="paid">Paid</option>
+                <option value="half">Half Paid</option>
+                <option value="unpaid">Unpaid</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label for="dateFrom">From</label>
+              <input type="date" id="dateFrom" class="form-control">
+            </div>
+            <div class="filter-item">
+              <label for="dateTo">To</label>
+              <input type="date" id="dateTo" class="form-control">
+            </div>
+            <button class="btn btn-primary" onclick="filterContributions()">
+              <i class="fas fa-filter"></i> Apply Filters
+            </button>
+          </div>
+
+          <div class="card">
+            <div class="table-responsive">
+              <table id="contributionsTable">
+                <thead><tr>
+                  <th>Name</th><th>Amount</th><th>Date</th><th>Method</th><th>Status</th>
+                  <th class="officer-only">Actions</th>
+                </tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment -->
+        <div id="payment" class="tab-content" style="display:none;">
+          <div class="page-header">
+            <h2><i class="fas fa-credit-card"></i> Payment Portal</h2>
+          </div>
+          <div class="card payment-card">
+            <div class="card-header">
+              <h3><i class="fas fa-qrcode"></i> Pay via GCash</h3>
+              <button class="btn btn-primary officer-only" onclick="document.getElementById('qrInput').click()">
+                <i class="fas fa-camera"></i> Update QR
+              </button>
+            </div>
+            <div class="payment-content">
+              <p class="payment-desc">
+                Scan the QR code below using your GCash app to send your contribution.
+              </p>
+              <div class="qr-display-area">
+                <img id="gcashQrImage"
+                     src="https://placehold.co/280x280/f5f7f2/1a6b3c?text=No+QR+Uploaded"
+                     alt="GCash QR Code">
+              </div>
+              <input type="file" id="qrInput" accept="image/*" style="display:none;" onchange="previewQr(this)">
+              <div id="qrSaveControls" style="display:none;">
+                <button class="btn btn-primary" onclick="saveQrCode()">
+                  <i class="fas fa-save"></i> Save Change
+                </button>
+                <button class="btn btn-outline" onclick="cancelQrUpload()">
+                  <i class="fas fa-times"></i> Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About -->
+        <div id="creditsTab" class="tab-content" style="display:none;">
+          <div class="page-header">
+            <h2><i class="fas fa-info-circle"></i> About</h2>
+          </div>
+
+          <div class="about-single-card">
+
+            <!-- Logo / Icon -->
+            <div class="about-icon-wrap">
+              <i class="fas fa-code"></i>
+            </div>
+
+            <!-- Title block -->
+            <h2 class="about-main-title">Class Fund Management</h2>
+            <p class="about-main-group">Developed by <strong>Group 3 — ICT21</strong></p>
+            <p class="about-main-appname">TREASURE</p>
+            <p class="about-main-desc">
+              Smarter way for class treasurers to manage contributions,
+              track expenses, and keep every classmate informed all in one place.
+            </p>
+
+            <!-- Project Goals -->
+            <div class="about-section">
+              <div class="about-section-label">
+                <i class="fas fa-bullseye"></i> PROJECT GOALS
+              </div>
+              <p class="about-section-text">
+                This system was designed to provide transparency and ease of access for student
+                class funds, allowing officers to manage collections and students to track their
+                contributions in real-time.
+              </p>
+              <ul class="about-list">
+                <li><i class="fas fa-circle-dot"></i> Traditional fund tracking was done on paper or notebooks that can be easily lost, damaged, or unclear.</li>
+                <li><i class="fas fa-circle-dot"></i> Students have no visibility into where their contributions were being spent.</li>
+                <li><i class="fas fa-circle-dot"></i> Manual calculations and record keeping.</li>
+              </ul>
+              <p class="about-section-text">
+                We replaced all of this with a clean, digital, always-accessible system.
+              </p>
+              <p class="about-section-text">
+                This is a student-led project created for educational purposes using Firebase Authentication.
+              </p>
+            </div>
+
+            <!-- Technologies -->
+            <div class="about-section">
+              <div class="about-section-label">
+                <i class="fas fa-microchip"></i> TECHNOLOGIES USED
+              </div>
+              <div class="about-tech-badges">
+                <span class="about-tech-badge"><i class="fas fa-code"></i> VS Code</span>
+                <span class="about-tech-badge"><i class="fas fa-fire"></i> Firebase Auth</span>
+                <span class="about-tech-badge"><i class="fas fa-database"></i> Firestore</span>
+                <span class="about-tech-badge"><i class="fab fa-node-js"></i> Node.js</span>
+                <span class="about-tech-badge"><i class="fab fa-html5"></i> HTML / CSS</span>
+                <span class="about-tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Class Members -->
+        <div id="classMembers" class="tab-content" style="display:none;">
+          <div class="page-header">
+            <h2><i class="fas fa-users"></i> Class Members</h2>
+            <button class="btn btn-primary officer-only" onclick="showModal('addMemberModal')">
+              <i class="fas fa-plus"></i> Add Member
+            </button>
+          </div>
+          <div class="card">
+            <div class="table-responsive">
+              <table id="membersTable">
+                <thead><tr>
+                  <th>ID</th><th>Name</th><th>Contact</th><th>Status</th>
+                  <th>Last Payment</th><th class="officer-only">Actions</th>
+                </tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events -->
+        <div id="events" class="tab-content" style="display:none;">
+          <div class="page-header">
+            <h2><i class="fas fa-calendar-alt"></i> Events</h2>
+            <button class="btn btn-primary officer-only" onclick="showModal('addEventModal')">
+              <i class="fas fa-plus"></i> Add Event
+            </button>
+          </div>
+          <div class="card">
+            <div class="table-responsive">
+              <table id="eventsTable">
+                <thead><tr>
+                  <th>Event Name</th><th>Date</th><th>Budget Goal</th><th>Collected</th><th>Remaining</th><th>Status</th>
+                  <th class="officer-only">Actions</th>
+                </tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reports -->
+        <div id="reports" class="tab-content" style="display:none;">
+          <div class="page-header">
+            <h2><i class="fas fa-chart-bar"></i> Financial Reports</h2>
+            <button class="btn btn-primary" onclick="generateReport()">
+              <i class="fas fa-file-pdf"></i> Generate Report
+            </button>
+          </div>
+          <div class="card">
+            <div class="filter-bar">
+              <div class="filter-item">
+                <label for="reportPeriod">Report Period</label>
+                <select id="reportPeriod" class="form-control">
+                  <option value="current">Current Month</option>
+                  <option value="last">Last Month</option>
+                  <option value="quarter">This Quarter</option>
+                  <option value="year">This Year</option>
+                  <option value="custom">Custom Range</option>
+                </select>
+              </div>
+              <div id="customRange" class="filter-item" style="display:none;">
+                <label for="reportDateFrom">From</label>
+                <input type="date" id="reportDateFrom" class="form-control">
+                <label for="reportDateTo" style="margin-top:0.5rem;">To</label>
+                <input type="date" id="reportDateTo" class="form-control">
+              </div>
+            </div>
+
+            <div id="reportContent" class="printable-report">
+              <div class="report-header">
+                <h2>Class Fund Financial Report</h2>
+                <p>Generated on: <span id="reportDate"></span></p>
+                <p>Report Period: <span id="reportPeriodText">Current Month</span></p>
+              </div>
+
+              <div class="dash-stats-grid">
+                <div class="dash-stat-card">
+                  <div class="dash-stat-left">
+                    <span class="dash-stat-label">Total Funds</span>
+                    <span class="dash-stat-value" id="reportTotalFunds">₱0</span>
+                  </div>
+                  <div class="dash-stat-icon dash-icon-teal"><i class="fas fa-wallet"></i></div>
+                </div>
+                <div class="dash-stat-card">
+                  <div class="dash-stat-left">
+                    <span class="dash-stat-label">Total Contributions</span>
+                    <span class="dash-stat-value" id="reportTotalContributions">₱0</span>
+                  </div>
+                  <div class="dash-stat-icon dash-icon-green"><i class="fas fa-arrow-trend-up"></i></div>
+                </div>
+                <div class="dash-stat-card">
+                  <div class="dash-stat-left">
+                    <span class="dash-stat-label">Total Expenses</span>
+                    <span class="dash-stat-value" id="reportTotalExpenses">₱0</span>
+                  </div>
+                  <div class="dash-stat-icon dash-icon-orange"><i class="fas fa-arrow-trend-down"></i></div>
+                </div>
+                <div class="dash-stat-card">
+                  <div class="dash-stat-left">
+                    <span class="dash-stat-label">Members Paid</span>
+                    <span class="dash-stat-value" id="reportMembersPaid">0/0</span>
+                  </div>
+                  <div class="dash-stat-icon dash-icon-blue"><i class="fas fa-circle-check"></i></div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header"><h3>Contributions Summary</h3></div>
+                <div class="table-responsive">
+                  <table id="reportContributionsTable">
+                    <thead><tr>
+                      <th>Name</th><th>Amount</th><th>Date</th><th>Method</th><th>Status</th><th>Notes</th>
+                    </tr></thead>
+                    <tbody id="reportContributionsBody"></tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="report-footer">
+                <p>Generated by TREASURE — Class Fund Management System</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audit Log -->
+        <div id="auditLog" class="tab-content" style="display:none;">
+          <div class="page-header">
+            <h2><i class="fas fa-clipboard-list"></i> Audit Log</h2>
+            <button class="btn btn-outline officer-only" onclick="clearAuditLog()" style="color:var(--danger);border-color:var(--danger);">
+              <i class="fas fa-trash-alt"></i> Clear Log
+            </button>
+          </div>
+
+          <div class="filter-bar" style="margin-bottom:1rem;">
+            <div class="filter-item">
+              <label for="auditTypeFilter">Action Type</label>
+              <select id="auditTypeFilter" class="form-control" onchange="renderAuditTable()">
+                <option value="all">All Actions</option>
+                <option value="add">Added</option>
+                <option value="edit">Edited</option>
+                <option value="delete">Deleted</option>
+                <option value="login">Login</option>
+                <option value="export">Export</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label for="auditSearch">Search</label>
+              <input type="text" id="auditSearch" class="form-control" placeholder="Search actions..." oninput="renderAuditTable()">
+            </div>
+            <div class="filter-item">
+              <label for="auditDateFilter">Date</label>
+              <input type="date" id="auditDateFilter" class="form-control" onchange="renderAuditTable()">
+            </div>
+            <button class="btn btn-outline" onclick="clearAuditFilters()">
+              <i class="fas fa-times"></i> Clear Filters
+            </button>
+          </div>
+
+          <div class="card">
+            <div class="audit-summary" id="auditSummary"></div>
+            <div class="table-responsive">
+              <table id="auditTable">
+                <thead>
+                  <tr>
+                    <th style="width:44px;"></th>
+                    <th>Action</th>
+                    <th>Performed By</th>
+                    <th>Role</th>
+                    <th>Date & Time</th>
+                  </tr>
+                </thead>
+                <tbody id="auditTableBody">
+                  <tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--text-light);">Loading audit log...</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="audit-pagination" id="auditPagination"></div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Contribution Modal -->
+  <div id="addContributionModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-money-bill-wave"></i> Add Contribution</h2>
+        <button class="close" onclick="closeModal('addContributionModal')">&times;</button>
+      </div>
+      <form id="contributionForm" autocomplete="off">
+        <div class="form-group">
+          <label for="studentSelect">Student</label>
+          <select id="studentSelect" class="form-control" required>
+            <option value="">Select Student</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount</label>
+          <input type="number" autocomplete="off" id="amount" class="form-control" placeholder="Enter amount" required>
+        </div>
+        <div class="form-group">
+          <label for="paymentDate">Date</label>
+          <input type="date" id="paymentDate" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="paymentMethod">Payment Method</label>
+          <select id="paymentMethod" class="form-control" required>
+            <option value="">Select Method</option>
+            <option value="cash">Cash</option>
+            <option value="gcash">GCash / Online</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="contributionEventLink">Link to Event <span style="font-weight:400;color:var(--text-light);font-size:0.75rem;">(optional)</span></label>
+          <select id="contributionEventLink" class="form-control">
+            <option value="">No event linked</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="notes">Notes</label>
+          <textarea id="notes" class="form-control" placeholder="Optional notes" rows="2"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button id="saveContributionBtn" type="button" class="btn btn-primary">
+            <i class="fas fa-save"></i> Save
+          </button>
+          <button type="button" class="btn btn-outline" onclick="closeModal('addContributionModal')">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Member Modal -->
+  <div id="addMemberModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-user-plus"></i> Add Member</h2>
+        <button class="close" onclick="closeModal('addMemberModal')">&times;</button>
+      </div>
+      <form id="memberForm" autocomplete="off">
+        <div class="form-group">
+          <label for="memberId">Student ID</label>
+          <input type="text" autocomplete="off" id="memberId" class="form-control" placeholder="Enter student ID" required>
+        </div>
+        <div class="form-group">
+          <label for="memberName">Full Name</label>
+          <input type="text" autocomplete="off" id="memberName" class="form-control" placeholder="Enter full name" required>
+        </div>
+        <div class="form-group">
+          <label for="memberContact">Contact Info</label>
+          <input type="text" autocomplete="off" id="memberContact" class="form-control" placeholder="Email or phone number" required>
+        </div>
+        <div class="modal-actions">
+          <button id="saveMemberBtn" type="button" class="btn btn-primary">
+            <i class="fas fa-save"></i> Save
+          </button>
+          <button type="button" class="btn btn-outline" onclick="closeModal('addMemberModal')">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Event Modal -->
+  <div id="addEventModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-calendar-plus"></i> Add Event</h2>
+        <button class="close" onclick="closeModal('addEventModal')">&times;</button>
+      </div>
+      <form id="eventForm" autocomplete="off">
+        <div class="form-group">
+          <label for="eventName">Event Name</label>
+          <input type="text" autocomplete="off" id="eventName" class="form-control" placeholder="Enter event name" required>
+        </div>
+        <div class="form-group">
+          <label for="eventDate">Date</label>
+          <input type="date" id="eventDate" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="eventBudget">Budget</label>
+          <input type="number" autocomplete="off" id="eventBudget" class="form-control" placeholder="Enter budget" required>
+        </div>
+        <div class="form-group">
+          <label for="eventStatus">Status</label>
+          <select id="eventStatus" class="form-control" required>
+            <option value="planning">Planning</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button id="saveEventBtn" type="button" class="btn btn-primary">
+            <i class="fas fa-save"></i> Save
+          </button>
+          <button type="button" class="btn btn-outline" onclick="closeModal('addEventModal')">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Profile Modal -->
+  <div id="editProfileModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-user-edit"></i> Edit Profile</h2>
+        <button class="close" onclick="closeModal('editProfileModal')">&times;</button>
+      </div>
+      <form id="editProfileForm" autocomplete="off">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="editFirstName">First Name</label>
+            <input type="text" id="editFirstName" class="form-control" placeholder="Enter first name">
+          </div>
+          <div class="form-group">
+            <label for="editLastName">Last Name</label>
+            <input type="text" id="editLastName" class="form-control" placeholder="Enter last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="editEmail">Email</label>
+          <input type="email" id="editEmail" class="form-control" placeholder="Email" disabled>
+        </div>
+        <div id="pwChangeMsg" class="messageDiv" style="margin-bottom:0.75rem;"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-primary" onclick="saveProfile()">
+            <i class="fas fa-save"></i> Save Changes
+          </button>
+          <button type="button" class="btn btn-outline" onclick="closeModal('editProfileModal')">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Settings Modal (Centered) -->
+  <div class="settings-overlay" id="settingsOverlay" onclick="closeSettingsOnOverlay(event)">
+    <div id="settingsPanel" onclick="event.stopPropagation()">
+      <div class="settings-header">
+        <h3><i class="fas fa-cog" style="margin-right:0.5rem;color:var(--primary);"></i>Settings</h3>
+        <button class="settings-close" onclick="closeSettings()" aria-label="Close settings">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="settings-body">
+
+        <!-- Appearance -->
+        <div class="settings-section">
+          <div class="settings-section-title">Appearance</div>
+
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <div class="settings-label">Dark Mode</div>
+              <div class="settings-desc">Switch between light and dark theme</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="darkModeToggle" onchange="handleDarkModeToggle(this)">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <div class="settings-label">Accent Color</div>
+              <div class="settings-desc">Choose your accent color</div>
+            </div>
+            <div class="color-swatches">
+              <div class="color-swatch active" style="background:#1a6b3c;" data-color="green" onclick="setAccentColor('green','#1a6b3c','#2a8f52','rgba(26,107,60,0.09)','rgba(26,107,60,0.24)')" title="Green"></div>
+              <div class="color-swatch" style="background:#0f6b8e;" data-color="teal" onclick="setAccentColor('teal','#0f6b8e','#1391bf','rgba(15,107,142,0.1)','rgba(15,107,142,0.22)')" title="Teal"></div>
+              <div class="color-swatch" style="background:#7c3aed;" data-color="violet" onclick="setAccentColor('violet','#7c3aed','#9f67f5','rgba(124,58,237,0.1)','rgba(124,58,237,0.22)')" title="Violet"></div>
+              <div class="color-swatch" style="background:#c2410c;" data-color="orange" onclick="setAccentColor('orange','#c2410c','#ea6c2a','rgba(194,65,12,0.1)','rgba(194,65,12,0.22)')" title="Orange"></div>
+              <div class="color-swatch" style="background:#db2777;" data-color="pink" onclick="setAccentColor('pink','#db2777','#f472b6','rgba(219,39,119,0.1)','rgba(219,39,119,0.22)')" title="Pink"></div>
+              <div class="color-swatch color-swatch-wheel" id="colorWheelSwatch" title="Custom color" onclick="document.getElementById('customColorPicker').click()">
+                <i class="fas fa-palette"></i>
+              </div>
+              <input type="color" id="customColorPicker" style="display:none;" oninput="handleCustomColor(this.value)" onchange="handleCustomColor(this.value)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Layout -->
+        <div class="settings-section">
+          <div class="settings-section-title">Layout</div>
+
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <div class="settings-label">Density</div>
+              <div class="settings-desc">Adjust spacing and padding</div>
+            </div>
+            <div class="layout-opts">
+              <button class="layout-btn active" id="layoutComfort" onclick="setLayout('comfortable')">
+                <i class="fas fa-expand-alt"></i>
+                <span>Comfortable</span>
+              </button>
+              <button class="layout-btn" id="layoutCompact" onclick="setLayout('compact')">
+                <i class="fas fa-compress-alt"></i>
+                <span>Compact</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="settings-section">
+          <div class="settings-section-title">Text Size</div>
+          <div class="settings-row">
+            <div class="settings-label">Font Size</div>
+            <div class="font-size-btns">
+              <button class="font-size-btn" id="fontSmall" onclick="setFontSize('small')">S</button>
+              <button class="font-size-btn active" id="fontMedium" onclick="setFontSize('medium')">M</button>
+              <button class="font-size-btn" id="fontLarge" onclick="setFontSize('large')">L</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preferences -->
+        <div class="settings-section">
+          <div class="settings-section-title">Preferences</div>
+
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <div class="settings-label">Show Animations</div>
+              <div class="settings-desc">Enable UI transition effects</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="animToggle" checked onchange="handleAnimToggle(this)">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <div class="settings-label">Show Tooltips</div>
+              <div class="settings-desc">Collapsed sidebar labels</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="tooltipToggle" checked onchange="handleTooltipToggle(this)">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section-title">Navigation Order &amp; Labels</div>
+          <div class="settings-desc" style="margin-bottom:0.875rem;font-size:0.75rem;color:var(--text-light);">
+            <i class="fas fa-grip-lines" style="margin-right:0.3rem;"></i>Drag to reorder. Click label to rename.
+          </div>
+          <div class="nav-reorder-list" id="navLabelList">
+            <div class="nav-reorder-row" draggable="true" data-nav="dashboard"><span class="nav-reorder-handle"><i class="fas fa-grip-vertical"></i></span><i class="fas fa-tachometer-alt nav-label-icon"></i><input type="text" class="nav-label-input form-control" data-nav="dashboard" placeholder="Dashboard" value="Dashboard"></div>
+            <div class="nav-reorder-row" draggable="true" data-nav="contributions"><span class="nav-reorder-handle"><i class="fas fa-grip-vertical"></i></span><i class="fas fa-money-bill-wave nav-label-icon"></i><input type="text" class="nav-label-input form-control" data-nav="contributions" placeholder="Contributions" value="Contributions"></div>
+            <div class="nav-reorder-row" draggable="true" data-nav="payment"><span class="nav-reorder-handle"><i class="fas fa-grip-vertical"></i></span><i class="fas fa-credit-card nav-label-icon"></i><input type="text" class="nav-label-input form-control" data-nav="payment" placeholder="Payment" value="Payment"></div>
+            <div class="nav-reorder-row" draggable="true" data-nav="classMembers"><span class="nav-reorder-handle"><i class="fas fa-grip-vertical"></i></span><i class="fas fa-users nav-label-icon"></i><input type="text" class="nav-label-input form-control" data-nav="classMembers" placeholder="Class Members" value="Class Members"></div>
+            <div class="nav-reorder-row" draggable="true" data-nav="accountManagement"><span class="nav-reorder-handle"><i class="fas fa-grip-vertical"></i></span><i class="fas fa-user-shield nav-label-icon"></i><input type="text" class="nav-label-input form-control" data-nav="accountManagement" placeholder="Manage Accounts" value="Manage Accounts"></div>
+            <div class="nav-reorder-row" draggable="true" data-nav="events"><span class="nav-reorder-handle"><i class="fas fa-grip-vertical"></i></span><i class="fas fa-calendar-alt nav-label-icon"></i><input type="text" class="nav-label-input form-control" data-nav="events" placeholder="Events" value="Events"></div>
+            <div class="nav-reorder-row" draggable="true" data-nav="reports"><span class="nav-reorder-handle"><i class="fas fa-grip-vertical"></i></span><i class="fas fa-chart-bar nav-label-icon"></i><input type="text" class="nav-label-input form-control" data-nav="reports" placeholder="Reports" value="Reports"></div>
+            <div class="nav-reorder-row" draggable="true" data-nav="auditLog"><span class="nav-reorder-handle"><i class="fas fa-grip-vertical"></i></span><i class="fas fa-clipboard-list nav-label-icon"></i><input type="text" class="nav-label-input form-control" data-nav="auditLog" placeholder="Audit Log" value="Audit Log"></div>
+            <div class="nav-reorder-row nav-reorder-locked" data-nav="creditsTab"><span class="nav-reorder-handle" style="opacity:0.25;cursor:not-allowed;" title="Pinned last"><i class="fas fa-lock"></i></span><i class="fas fa-info-circle nav-label-icon"></i><span class="nav-locked-label">About <span class="nav-locked-badge"><i class="fas fa-thumbtack"></i> Pinned</span></span></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="settings-footer">
+        <button class="btn btn-outline" onclick="resetSettings()">
+          <i class="fas fa-undo"></i> Reset Defaults
+        </button>
+        <button class="btn btn-primary" onclick="applySettings()">
+          <i class="fas fa-check"></i> Apply Changes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms Modal -->
+  <div class="terms-modal-overlay" id="termsModal" onclick="closeTermsOnOverlay(event)">
+    <div class="terms-modal">
+      <div class="terms-modal-header">
+        <div>
+          <h2><i class="fas fa-file-contract"></i> Terms & Conditions</h2>
+          <p>Last updated: March 7, 2026</p>
+        </div>
+        <button class="terms-close-btn" onclick="closeTermsModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="terms-modal-body">
+        <p>Welcome to TREASURE – Class Fund Management System. By creating an account or using the system, you agree to comply with and be bound by the following terms.</p>
+        
+        <h3>1. Acceptance of Terms</h3>
+        <p>By registering and using TREASURE, users confirm that they have read, understood, and agreed to these Terms and Conditions. Continued use constitutes acceptance of any future updates.</p>
+        
+        <h3>2. Purpose of the Platform</h3>
+        <p>TREASURE is designed to assist class treasurers and authorized users in recording, monitoring, and managing class fund contributions and expenses. The platform is intended solely for legitimate class-related financial activities.</p>
+        
+        <h3>3. User Accounts and Security</h3>
+        <p>Users are responsible for maintaining the confidentiality of their login credentials, ensuring account information is accurate and up to date, and preventing unauthorized access.</p>
+        
+        <h3>4. Accuracy of Financial Records</h3>
+        <p>Users are responsible for ensuring that all financial records entered are accurate and truthful. TREASURE administrators and developers are not responsible for errors resulting from incorrect data entered by users.</p>
+        
+        <h3>5. User Responsibilities</h3>
+        <p>All users agree to use the system responsibly. Users must not:</p>
+        <ul>
+          <li>Attempt to damage, disrupt, or interfere with the operation of the system</li>
+          <li>Manipulate, falsify, or delete financial records without authorization</li>
+          <li>Attempt to bypass system security or gain unauthorized access to data</li>
+        </ul>
+        
+        <h3>6. Privacy and Data Usage</h3>
+        <p>TREASURE collects and stores limited information necessary for system operation. All collected data is used solely for managing class fund activities.</p>
+        
+        <h3>7. System Availability</h3>
+        <p>While efforts are made to keep the system available at all times, temporary interruptions may occur due to maintenance, updates, or technical issues.</p>
+        
+        <h3>8. Limitation of Liability</h3>
+        <p>The developers and administrators are not responsible for financial losses or disputes that may arise from how users interpret or manage the recorded data.</p>
+        
+        <h3>9. Modifications to Terms</h3>
+        <p>The developer reserves the right to update, modify, or improve the system and these Terms at any time. Continued use after updates indicates acceptance of the revised terms.</p>
+        
+        <h3>10. Contact Information</h3>
+        <p>For questions or concerns, please contact us at <a href="treasure.contact.ict21@gmail.com">treasure.contact.ict21@gmail.com</span></a>.</p>
+      </div>
+      <div class="terms-modal-footer">
+        <button class="btn btn-primary" onclick="closeTermsModal(); document.getElementById('termsCheckbox') && (document.getElementById('termsCheckbox').checked=true);">
+          <i class="fas fa-check"></i> I Understand
+        </button>
+        <button class="btn btn-outline" onclick="closeTermsModal()">
+          <i class="fas fa-times"></i> Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
