@@ -1079,3 +1079,55 @@ window.clearAuditFilters = function() {
 
 window.initAuditLogListener = function() {}; 
 window.updateReport = updateReport;
+
+
+
+const MAX_ATTEMPTS = 8;
+const LOCKOUT_TIME_MS = 15 * 60 * 1000; // 15 minutes
+
+window.handleLoginAttempt = async function(email, password) {
+  let attemptsData = JSON.parse(localStorage.getItem('loginAttempts')) || {
+    count: 0,
+    lockUntil: null
+  };
+
+  const now = Date.now();
+
+  if (attemptsData.lockUntil) {
+    if (now < attemptsData.lockUntil) {
+      const remainingMinutes = Math.ceil((attemptsData.lockUntil - now) / 60000);
+      showNotification(`Too many failed login attempts. Please try again in ${remainingMinutes} minute(s).`, "error");
+      return;
+    } else {
+      attemptsData = {
+        count: 0,
+        lockUntil: null
+      };
+      localStorage.removeItem('loginAttempts');
+    }
+  }
+
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+
+    localStorage.removeItem('loginAttempts');
+    showNotification("Login successful!", "success");
+
+    if (typeof window.enterApp === 'function') {
+      window.enterApp();
+    }
+  } catch (error) {
+    console.error('Firebase Auth Error:', error.code, error.message);
+    
+    attemptsData.count += 1;
+    
+    if (attemptsData.count >= MAX_ATTEMPTS) {
+      attemptsData.lockUntil = Date.now() + LOCKOUT_TIME_MS;
+      localStorage.setItem('loginAttempts', JSON.stringify(attemptsData));
+      showNotification(`Too many failed login attempts. Please try again later.`, "error");
+    } else {
+      localStorage.setItem('loginAttempts', JSON.stringify(attemptsData));
+      showNotification(`Incorrect Username or Password. You have ${MAX_ATTEMPTS - attemptsData.count} attempt(s) left.`, "error");
+    }
+  }
+};

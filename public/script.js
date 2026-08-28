@@ -764,14 +764,25 @@ let editingType = null;
 window.loadMembers = function() {
   const members = getData('members');
   const tbody = document.querySelector('#membersTable tbody');
+  const countElement = document.querySelector('#memberCount');
+
+  if (countElement){
+    countElement.textContent = members.length;
+  }
   if (!tbody) return;
   
   if (members.length === 0) {
     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text-light);">No members found. Click "Add Member" to get started.</td></tr>';
     return;
   }
+
+  const sortedMembers = [...members].sort((a, b) => {
+    const nameA = (a.memberName || '');
+    const nameB = (b.memberName || '');
+    return nameA.localeCompare(nameB, undefined, { sensitivity: 'base' });
+  });
   
-  tbody.innerHTML = members.map(m => `
+  tbody.innerHTML = sortedMembers.map(m => `
     <tr>
       <td>${m.memberId || '-'}</td>
       <td>${m.memberName || '-'}</td>
@@ -1636,3 +1647,26 @@ window.hideLoading = function() {
   const overlay = document.getElementById('loadingOverlay');
   if (overlay) overlay.classList.remove('active');
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('loginForm');
+
+  if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const emailInput = document.getElementById('loginEmail');
+      const passwordInput = document.getElementById('loginPassword');
+
+      if(!emailInput || !passwordInput) {
+        showNotification('Please enter Both email and password', 'error');
+        return;
+      }
+
+      await window.handleLogin(email,password);
+    });
+  }
+});
+
+
+
