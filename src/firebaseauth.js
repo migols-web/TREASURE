@@ -25,6 +25,7 @@ import {
   onSnapshot,
   deleteDoc,
   getDocs,
+  writeBatch,
   updateDoc,
   query,
   where
@@ -471,12 +472,24 @@ window.deleteEvent = async function(id) {
 
 window.clearAuditLog = async function() {
   if (!confirm('Are you sure you want to clear the audit log?')) return;
-  if (!currentSection) return;
+  if (!currentSection) {
+    showNotification('Unable to clear audit log: class section is not initialised', 'error');
+    return;
+  }
   try {
-    const snapshot  = await getDocs(classCol('auditLog'));
-    await Promise.all(snapshot.docs.map(d => deleteDoc(classDoc('auditLog', d.id))));
+    const snapshot = await getDocs(classCol('auditLog'));
+    for (let i = 0; i < snapshot.docs.length; i += 500) {
+      const batch = writeBatch(db);
+      snapshot.docs.slice(i, i + 500).forEach(auditDoc => batch.delete(auditDoc.ref));
+      await batch.commit();
+    }
+    _auditCache = [];
+    window.renderAuditTable();
     showNotification('Audit log cleared');
-  } catch (err) { showNotification('Failed to clear audit log', 'error'); }
+  } catch (err) {
+    console.error('Error clearing audit log:', err);
+    showNotification(`Failed to clear audit log: ${err.message}`, 'error');
+  }
 };
 
 // ── Member select for contribution modal ──────────────────────────────────────
